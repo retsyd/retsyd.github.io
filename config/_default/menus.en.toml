@@ -1,0 +1,21 @@
+[[main]]
+  name = "Projects"
+  pageRef = "projects"
+  weight = 10
+
+[[main]]
+  name = "Blog"
+  pageRef = "blog"
+  weight = 20
+
+[[main]]
+  identifier = "cv"
+  name = "CV"
+  url = "https://drive.google.com/file/d/1OHnkkrYeZYSd39RTWicrK0By9DFID8QT/view?usp=sharing"
+  weight = 30
+
+[[main]]
+  identifier = "publications"
+  name = "Publications"
+  url = "https://scholar.google.co.uk/citations?hl=en&authuser=1&user=bdVgNeEAAAAJ"
+  weight = 40

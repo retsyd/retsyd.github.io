@@ -1,0 +1,19 @@
+languageCode = "en"
+languageName = "English"
+weight = 1
+title = "Victoria Dyster, PhD"
+
+[params]
+  displayName = "EN"
+  description = "Personal portfolio of Victoria Dyster — industry ML work and academic research in computational biology and antimicrobial resistance."
+
+[params.author]
+  name = "Victoria Dyster, PhD"
+  headline = ""
+  bio = "Machine learning engineer with a PhD in computational biology"
+  links = [
+    { github = "https://github.com/blue-moon22" },
+    { linkedin = "https://www.linkedin.com/in/victoriadyster" },
+    { google-scholar = "https://scholar.google.co.uk/citations?hl=en&authuser=1&user=bdVgNeEAAAAJ" },
+    { file-lines = "https://drive.google.com/file/d/1OHnkkrYeZYSd39RTWicrK0By9DFID8QT/view?usp=sharing" },
+  ]

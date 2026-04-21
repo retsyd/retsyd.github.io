@@ -1,0 +1,33 @@
+# Hugo output
+public/
+resources/_gen/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor
+*.swp
+*.swo
+*~
+
+# Hugo
+.hugo_build.lock
+# Hugo output
+public/
+resources/_gen/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor
+*.swp
+*.swo
+*~
+
+# Hugo
+.hugo_build.lock
+
+# Source documents (never commit)
+../inputs/

@@ -1,0 +1,9 @@
+/* Match headline and social icons to prose body text color (neutral-300) */
+header h2.text-xl {
+  color: rgba(var(--color-neutral-300), 1) !important;
+}
+
+/* Social icon links on profile */
+.mt-1.text-2xl .flex a {
+  color: rgba(var(--color-neutral-300), 1) !important;
+}

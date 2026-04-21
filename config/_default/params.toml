@@ -1,0 +1,47 @@
+colorScheme = "bioluminescence"
+defaultAppearance = "dark"
+autoSwitchAppearance = false
+enableSearch = true
+enableCodeCopy = true
+mainSections = ["projects"]
+
+[header]
+  layout = "basic"
+
+[footer]
+  showMenu = false
+  showCopyright = true
+  showThemeAttribution = true
+  showAppearanceSwitcher = true
+  showScrollToTop = true
+
+[homepage]
+  layout = "profile"
+  showRecent = true
+  showRecentItems = 3
+  showMoreLink = false
+  cardView = true
+  cardViewScreenWidth = false
+
+[article]
+  showDate = true
+  showDateUpdated = false
+  showAuthor = false
+  showBreadcrumbs = true
+  showDraftLabel = true
+  showHeadingAnchors = true
+  showPagination = true
+  showReadingTime = true
+  showTableOfContents = true
+  showTaxonomies = true
+  showWordCount = false
+
+[list]
+  showBreadcrumbs = true
+  showSummary = true
+  showCards = false
+  cardView = true
+  groupByYear = false
+
+[taxonomy]
+  showTermCount = true

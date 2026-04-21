@@ -1,0 +1,9 @@
+baseURL = "https://victoriadyster.com/"
+languageCode = "en"
+theme = "blowfish"
+paginate = 10
+enableRobotsTXT = true
+summaryLength = 0
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
