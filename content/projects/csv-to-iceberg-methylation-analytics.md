@@ -1,5 +1,5 @@
 ---
-title: "From CSVs to Iceberg: Scaling a Genomics ETL Pipeline for ML Training on a budget"
+title: "From CSVs to Iceberg: Scaling a Genomics ETL Pipeline for ML Training"
 date: 2025-12-14
 tags: ["data-engineering", "apache-iceberg", "aws-athena", "parquet", "genomics"]
 summary: "How replacing a CSV-join pipeline with Apache Iceberg and a long-format data model cut an ETL pipeline from ~15 minutes to a minute"
