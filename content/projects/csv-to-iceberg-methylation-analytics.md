@@ -1,8 +1,8 @@
 ---
-title: "From CSVs to Iceberg: Scaling a Genomics ETL Pipeline for ML Training"
-date: 2025-12-14
+title: "From CSVs to Iceberg: Building a Genomic Data Warehouse"
+date: 2026-02-14
 tags: ["data-engineering", "apache-iceberg", "aws-athena", "parquet", "genomics"]
-summary: "How replacing a CSV-join pipeline with Apache Iceberg and a long-format data model cut an ETL pipeline from ~15 minutes to a minute"
+summary: "How replacing a CSV-join pipeline with Apache Iceberg"
 ---
 
 We had a data ingestion pipeline to create wide-format matrix that worked perfectly well for hundreds of samples. But scaling this to thousands of samples would have broken it entirely. As a start-up, services like Snowflake and Databricks were out of our budget. So, I had to make the most of comparatively cheaper, native solutions in AWS. This post covers how I used long-formats and Apache Iceberg to build a solution that could scale.
@@ -55,7 +55,7 @@ This table is managed by Apache Iceberg, which provides the metadata and transac
 
 ### 3. Generate Wide Format On Demand
 
-When a wide-format matrix is needed for ML training, a single `GROUP BY` aggregation query pivots from long to wide. Athena's distributed engine touches each row exactly once regardless of sample count: no multi-stage joins, no intermediate files.
+When a wide-format matrix is needed, a single `GROUP BY` aggregation query pivots from long to wide. Athena's distributed engine touches each row exactly once regardless of sample count: no multi-stage joins, no intermediate files.
 
 ## Why Iceberg
 
@@ -119,7 +119,7 @@ The performance difference comes from three compounding factors:
 
 **VACUUM is required for true GDPR compliance.** Row-level deletes mark data as deleted in the metadata, but the underlying Parquet bytes remain until a `VACUUM` operation physically removes expired snapshots. For a right-to-erasure request, you need both the `DELETE` and a subsequent `VACUUM`.
 
-**Wide-format generation is now a query, not a file.** The legacy approach produced a static file that analysts could download and work with offline. The Iceberg approach generates wide format on demand via a query. For ML training pipelines that expect a file as input, this means adding a materialisation step.
+**Wide-format generation is now a query, not a file.** The legacy approach produced a static file that analysts could download and work with offline. The Iceberg approach generates wide format on demand via a query.
 
 **Long-format tables are larger.** Storing `sample_id` on every row is more verbose than a single column header in wide format. Parquet compression mitigates this significantly, but the raw row count scales as samples × loci (in our case, 4 million × sample count).
 
