@@ -7,3 +7,75 @@ header h2.text-xl {
 .mt-1.text-2xl .flex a {
   color: rgba(var(--color-neutral-300), 1) !important;
 }
+
+/* Two-column homepage layout: projects left, blog right */
+/* Break out of the prose max-width constraint */
+section.prose:has(.homepage-columns) {
+  max-width: none;
+}
+
+.homepage-columns {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 3rem;
+  align-items: start;
+  text-align: left;
+}
+
+/* Remove padding between Projects heading and first project */
+.homepage-main h2.mt-20 {
+  margin-bottom: 0 !important;
+}
+
+.homepage-main section.space-y-10 {
+  margin-top: 0 !important;
+}
+
+.homepage-sidebar {
+  font-size: 0.85rem;
+  position: sticky;
+  top: 2rem;
+}
+
+.homepage-sidebar h2 {
+  font-size: 1.25rem;
+}
+
+/* Blog by year dropdowns */
+.blog-by-year details {
+  margin-bottom: 0.5rem;
+}
+
+.blog-by-year summary {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0.25rem 0;
+}
+
+.blog-by-year ul {
+  list-style: none;
+  padding-left: 0.75rem;
+  margin: 0.25rem 0;
+}
+
+.blog-by-year li {
+  padding: 0.15rem 0;
+  line-height: 1.4;
+}
+
+.blog-by-year a {
+  text-decoration: none;
+  color: rgba(var(--color-neutral-300), 1);
+}
+
+.blog-by-year a:hover {
+  text-decoration: underline;
+  color: rgba(var(--color-primary-400), 1);
+}
+
+@media (max-width: 768px) {
+  .homepage-columns {
+    grid-template-columns: 1fr;
+  }
+}

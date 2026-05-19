@@ -1,7 +1,6 @@
 ---
 title: "Pre-commit Hooks for a Bilingual Codebase: Python and R with uv"
 date: 2025-06-01
-draft: true
 tags: ["python", "r", "developer-experience", "tooling"]
 summary: "How I set up pre-commit hooks for a mixed Python/R project using uv for dependency management — covering linting, formatting, type checking, security scanning, and notebook output stripping."
 ---

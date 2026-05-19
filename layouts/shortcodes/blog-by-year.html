@@ -1,0 +1,14 @@
+{{ $posts := where .Site.RegularPages "Type" "blog" }}
+{{ $grouped := $posts.GroupByDate "2006" }}
+<div class="blog-by-year">
+{{ range $grouped }}
+  <details open>
+    <summary>{{ .Key }}</summary>
+    <ul>
+      {{ range .Pages }}
+        <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+      {{ end }}
+    </ul>
+  </details>
+{{ end }}
+</div>

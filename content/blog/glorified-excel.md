@@ -1,6 +1,6 @@
 ---
 title: "Glorified Excel: The Dashboard Feature Request You Should Push Back On"
-date: 2023-09-01
+date: 2024-09-01
 tags: ["software-engineering", "biotech", "dashboards", "product"]
 summary: "In biotech, the most common dashboard feature request is a filterable, sortable table. The fastest solution is usually a CSV download and the spreadsheet software people already know."
 ---

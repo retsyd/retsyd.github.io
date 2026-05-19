@@ -3,7 +3,7 @@ defaultAppearance = "dark"
 autoSwitchAppearance = false
 enableSearch = true
 enableCodeCopy = true
-mainSections = ["projects"]
+mainSections = ["projects", "blog"]
 
 [header]
   layout = "basic"
@@ -17,8 +17,7 @@ mainSections = ["projects"]
 
 [homepage]
   layout = "profile"
-  showRecent = true
-  showRecentItems = 3
+  showRecent = false
   showMoreLink = false
   cardView = true
   cardViewScreenWidth = false
