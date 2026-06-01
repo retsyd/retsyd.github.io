@@ -1,9 +1,4 @@
 [[main]]
-  name = "Projects"
-  pageRef = "projects"
-  weight = 10
-
-[[main]]
   identifier = "cv"
   name = "CV"
   url = "https://drive.google.com/file/d/1OHnkkrYeZYSd39RTWicrK0By9DFID8QT/view?usp=sharing"
