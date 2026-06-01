@@ -3,7 +3,7 @@ defaultAppearance = "dark"
 autoSwitchAppearance = false
 enableSearch = true
 enableCodeCopy = true
-mainSections = ["projects", "blog"]
+mainSections = ["projects"]
 
 [header]
   layout = "basic"
