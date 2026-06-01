@@ -1,8 +1,6 @@
 ---
 title: "Building a Self-Service Analysis Environment for Data Scientists"
 date: 2024-03-15
-tags: ["python", "aws", "cli", "platform-engineering"]
-summary: "Designing and building a Python CLI that lets data scientists create, manage, and safely shut down cloud research environments without needing to know Terraform or the AWS console."
 ---
 
 Data scientists need powerful compute. This post covers how I built a CLI tool that gives scientists self-service access to EC2 instances while quietly solving the operational problems they don't think about: data persistence, cost control, and environment reproducibility.

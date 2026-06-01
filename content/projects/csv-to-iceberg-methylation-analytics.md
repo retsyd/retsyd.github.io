@@ -1,8 +1,6 @@
 ---
 title: "From CSVs to Iceberg: Building a Genomic Data Warehouse"
 date: 2026-02-14
-tags: ["data-engineering", "apache-iceberg", "aws-athena", "parquet", "genomics"]
-summary: "How replacing a CSV-join pipeline with Apache Iceberg"
 ---
 
 We had a data ingestion pipeline to create wide-format matrix that worked perfectly well for hundreds of samples. But scaling this to thousands of samples would have broken it entirely. As a start-up, services like Snowflake and Databricks were out of our budget. So, I had to make the most of comparatively cheaper, native solutions in AWS. This post covers how I used long-formats and Apache Iceberg to build a solution that could scale.

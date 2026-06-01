@@ -1,8 +1,6 @@
 ---
 title: "Loading using Zarr: Scalable ingestion for ML training"
 date: 2026-04-17
-tags: ["zarr", "machine-learning", "data-engineering", "aws-athena", "pyarrow", "genomics"]
-summary: "Using a chunked, sharded Zarr cache so that training jobs read wide methylation matrices in seconds instead of minutes."
 ---
 
 In an [earlier project](/projects/csv-to-iceberg-methylation-analytics) I described how methylation data is naturally wide: tens of millions of CpG sites across hundreds-to-thousands of samples. Storing it that way in [Iceberg](/projects/csv-to-iceberg-methylation-analytics/) is a bad idea, so the warehouse holds it long. But every ML training job wants it wide again. This post is about the loader that bridges the two: a Zarr-backed cache that turns a slow, expensive Athena pivot into a one-time cost.

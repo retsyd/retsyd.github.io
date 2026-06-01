@@ -1,23 +1,11 @@
 ---
 title: "Pre-commit Hooks for a Bilingual Codebase: Python and R with uv"
-date: 2025-08-20
-tags: ["python", "r", "developer-experience", "tooling"]
-summary: "How I set up pre-commit hooks for a mixed Python/R project using uv for dependency management, covering linting, formatting, type checking, security scanning, and notebook output stripping."
+date: 2025-06-01
 ---
 
 When your codebase has both Python and R — scripts, notebooks, shared config — keeping code quality consistent is harder than it sounds. People forget to format, linting rules drift, and someone inevitably commits a Jupyter notebook with 200 cells of output. Pre-commit hooks fix this by running checks automatically before every commit, so the team doesn't have to think about it.
 
-Here's how I configured pre-commit for a mixed Python/R project managed with [uv](https://docs.astral.sh/uv/). With all of this in place, every `git commit` automatically triggers:
-
-1. **Lock file check**: ensures `uv.lock` matches `pyproject.toml`
-2. **Ruff lint and format**: catches and fixes Python issues
-3. **File hygiene**: trailing whitespace, valid YAML/TOML, no large files
-4. **mypy**: type errors
-5. **Bandit**: security issues
-6. **nbstripout**: clean notebook diffs
-7. **R format and lint**: consistent R code style
-
-If any hook fails, the commit is blocked. Most Python hooks auto-fix and restage, so often you just run `git commit` again. It's enforced at commit time, and code review can focus on logic and design rather than style.
+Here's how I configured pre-commit for a mixed Python/R project managed with [uv](https://docs.astral.sh/uv/).
 
 ## The setup
 
@@ -27,6 +15,8 @@ The project uses `uv` for Python dependency management. The `pyproject.toml` def
 [dependency-groups]
 dev = [
     "mypy>=1.18.2",
+    "pytest>=8.4.2",
+    "pytest-cov>=7.0.0",
     "pre-commit>=4.3.0",
     "ruff>=0.13.2",
     "bandit[toml]>=1.8.6",
@@ -40,10 +30,11 @@ build-backend = "uv_build"
 package = false
 ```
 
-Installing the hooks:
+Installing hooks is two commands:
 
 ```bash
 uv sync --group dev
+uv run pre-commit install
 ```
 
 After this, every `git commit` triggers the hook suite automatically.
@@ -110,10 +101,11 @@ These are the pre-commit project's own hooks. `check-ast` catches Python syntax 
   rev: v1.18.2
   hooks:
     - id: mypy
+      files: ^src/
       additional_dependencies: [types-requests]
 ```
 
-The `additional_dependencies` field is how you give mypy access to type stubs. It runs in its own isolated environment, so it won't see your project's installed packages unless you list them here.
+Scoped to `src/` so it doesn't choke on test files or scripts. The `additional_dependencies` field is how you give mypy access to type stubs — it runs in its own isolated environment, so it won't see your project's installed packages unless you list them here.
 
 ### Security scanning with Bandit
 
@@ -126,7 +118,7 @@ The `additional_dependencies` field is how you give mypy access to type stubs. I
       additional_dependencies: ["bandit[toml]"]
 ```
 
-Bandit flags common security issues in Python code, i.e. hardcoded passwords, use of `subprocess` without input validation, insecure hash functions. Configuration goes in `pyproject.toml`:
+Bandit flags common security issues in Python code — hardcoded passwords, use of `subprocess` without input validation, insecure hash functions. Configuration goes in `pyproject.toml`:
 
 ```toml
 [tool.bandit]
@@ -189,6 +181,20 @@ jupytext --sync "$file"
       files: '\.(R|ipynb)$'
 ```
 
-Same pattern as formatting: lint `.R` files directly, convert notebooks via jupytext for linting, then clean up. The lintr configuration lives in `.lintr` at the repo root, with relaxed rules for things like line length and object naming that tend to generate noise rather than catch real issues.
+Same pattern — lint `.R` files directly, convert notebooks via jupytext for linting, then clean up. The lintr configuration lives in `.lintr` at the repo root, with relaxed rules for things like line length and object naming that tend to generate noise rather than catch real issues.
 
+## What this gets you
 
+With all of this in place, `git commit` triggers the full suite. A typical run looks like:
+
+1. Lock file check — ensures `uv.lock` matches `pyproject.toml`
+2. Ruff lint and format — catches and fixes Python issues
+3. File hygiene — trailing whitespace, valid YAML/TOML, no large files
+4. mypy — type errors in `src/`
+5. Bandit — security issues
+6. nbstripout — clean notebook diffs
+7. R format and lint — consistent R code style
+
+If any hook fails, the commit is blocked and you see exactly what needs fixing. Most of the Python hooks auto-fix and restage, so often you just need to run `git commit` again.
+
+The key thing is that none of this requires anyone to remember to run a formatter or linter. It's enforced at commit time, which means code review can focus on logic and design rather than style arguments.

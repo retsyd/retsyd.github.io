@@ -1,8 +1,6 @@
 ---
 title: "Scaling ML Training for Epigenetic Age Prediction"
 date: 2024-11-15
-tags: ["machine-learning", "aws", "sagemaker", "mlops", "scikit-learn"]
-summary: "How parallelising hyperparameter tuning on SageMaker turned a single-instance grid search into a 100x faster training workflow."
 ---
 
 My company published a [machine learning model in Nature Aging](https://www.nature.com/articles/s41514-025-00314-0) that predicts age from DNA methylation data collected from facial skin. This post covers the engineering side: scaling the training pipeline to handle hundreds of thousands of genomic features and building the ML toolkit that supports it.

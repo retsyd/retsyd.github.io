@@ -1,8 +1,6 @@
 ---
 title: "Palidis: A C++ Algorithm for Discovering Insertion Sequences in Metagenomic Data"
 date: 2023-10-10
-tags: ["c++", "algorithms", "bioinformatics", "nextflow", "open-source"]
-summary: "How I built a maximal exact matching algorithm in C++ with two-bit encoding to discover novel mobile genetic elements from metagenomic sequencing data and how it found applications from antimicrobial resistance surveillance to gene therapy manufacturing."
 ---
 
 {{< katex >}}

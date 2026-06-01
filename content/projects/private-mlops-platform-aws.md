@@ -1,8 +1,6 @@
 ---
 title: "Building a Private MLOps Platform on AWS"
 date: 2025-09-01
-tags: ["machine-learning", "mlops", "aws", "terraform", "mlflow"]
-summary: "How I deployed MLflow as a authenticated experiment tracking server on AWS and integrated it into a reusable ML toolkit."
 ---
 
 When our data science team outgrew ad hoc model training on shared EC2 instances, I built an internal MLOps platform from scratch. A central piece was deploying MLflow as a self-hosted, authenticated experiment tracking service with Terraform and a Python toolkit wrapping it for daily use.
