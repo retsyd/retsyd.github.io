@@ -66,4 +66,4 @@ Subsequent calls for the same samples skip steps 2–5 entirely.
 
 ## What this changes
 
-For a training job, the contract becomes: "give me these sample IDs as a wide matrix." First call pays the Athena cost. Every subsequent call — across folds, sweeps, runs, days — reads directly from Zarr in seconds. Adding samples is a single append; the existing shards never move. The result is a cache that an ML pipeline can treat as a local NumPy array even though it's living in S3.
+For a training job, the contract becomes: "give me these sample IDs as a wide matrix." First call pays the Athena cost. Every subsequent call - across folds, sweeps, runs, days - reads directly from Zarr in seconds. Adding samples is a single append; the existing shards never move. The result is a cache that an ML pipeline can treat as a local NumPy array even though it's living in S3.

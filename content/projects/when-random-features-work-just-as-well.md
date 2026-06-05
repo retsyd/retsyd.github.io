@@ -5,7 +5,7 @@ date: 2025-01-20
 
 {{< katex >}}
 
-Early in my work building an epigenetic age prediction model, I needed to reduce the input space from roughly 500,000 CpG sites down to something tractable. A colleague spent considerable time on feature engineering, ranking sites by variance, filtering by biological relevance, running correlation analyses to get to a few thousand features. I added benchmark: randomly sampling a few thousand features. The performance was essentially the same as feature engineering.
+Early in my work building an epigenetic age prediction model, I needed to reduce the input space from roughly 500,000 CpG sites down to something tractable. A colleague spent considerable time on feature engineering, ranking sites by variance, filtering by biological relevance, running correlation analyses to get to a few thousand features. I made a benchmark: randomly sampling a few thousand features. The performance was essentially the same as feature engineering.
 
 ## Why It Happens
 
